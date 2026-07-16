@@ -16,6 +16,9 @@ const SFX_PATHS: Dictionary = {
 	&"button": "res://assets/sounds/button.wav",
 	&"powerup": "res://assets/sounds/powerup.wav",
 	&"game_over": "res://assets/sounds/game_over.wav",
+	&"knock": "res://assets/sounds/knock.wav",
+	&"pocket": "res://assets/sounds/pocket.wav",
+	&"flick": "res://assets/sounds/flick.wav",
 }
 
 ## Sound library: StringName -> AudioStream, loaded once at boot.
@@ -44,8 +47,9 @@ func _ready() -> void:
 	print("[AudioManager] ready — %d SFX players, %d sounds loaded" % [SFX_POOL_SIZE, _sfx_library.size()])
 
 
-## Play a named sound effect, e.g. AudioManager.play_sfx(&"slice").
-func play_sfx(sfx_name: StringName, pitch_variation: float = 0.0) -> void:
+## Play a named sound effect, e.g. AudioManager.play_sfx(&"knock").
+## volume_db lets impact sounds scale with hit strength (0 = full volume).
+func play_sfx(sfx_name: StringName, pitch_variation: float = 0.0, volume_db: float = 0.0) -> void:
 	if not SaveManager.is_sfx_enabled():
 		return
 	var stream: AudioStream = _sfx_library.get(sfx_name)
@@ -55,6 +59,7 @@ func play_sfx(sfx_name: StringName, pitch_variation: float = 0.0) -> void:
 	_next_sfx_index = (_next_sfx_index + 1) % SFX_POOL_SIZE
 	player.stream = stream
 	player.pitch_scale = 1.0 + randf_range(-pitch_variation, pitch_variation)
+	player.volume_db = volume_db
 	player.play()
 
 

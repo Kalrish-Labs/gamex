@@ -16,8 +16,53 @@ func _init() -> void:
 	_save("button", _gen_button())
 	_save("powerup", _gen_powerup())
 	_save("game_over", _gen_game_over())
+	_save("knock", _gen_knock())
+	_save("pocket", _gen_pocket())
+	_save("flick", _gen_flick())
 	print("[SFX] all sounds generated")
 	quit()
+
+
+## Carrom coin clack: woody thump + bright tick, very short.
+func _gen_knock() -> PackedFloat32Array:
+	var n := int(0.12 * SAMPLE_RATE)
+	var out := PackedFloat32Array()
+	out.resize(n)
+	for i in n:
+		var t := float(i) / SAMPLE_RATE
+		var s := sin(TAU * 185.0 * t) * exp(-t * 45.0) * 0.8
+		s += sin(TAU * 920.0 * t) * exp(-t * 90.0) * 0.25
+		s += (randf() * 2.0 - 1.0) * exp(-t * 300.0) * 0.4
+		out[i] = clampf(s, -1.0, 1.0) * 0.85
+	return out
+
+
+## Coin dropping into the pocket: descending thunk.
+func _gen_pocket() -> PackedFloat32Array:
+	var n := int(0.2 * SAMPLE_RATE)
+	var out := PackedFloat32Array()
+	out.resize(n)
+	var phase := 0.0
+	for i in n:
+		var t := float(i) / SAMPLE_RATE
+		phase += TAU * (250.0 * exp(-t * 7.0) + 90.0) / SAMPLE_RATE
+		var s := sin(phase) * exp(-t * 16.0) * 0.9
+		s += (randf() * 2.0 - 1.0) * exp(-t * 120.0) * 0.2
+		out[i] = clampf(s, -1.0, 1.0) * 0.9
+	return out
+
+
+## Finger flick releasing the striker: tiny snap.
+func _gen_flick() -> PackedFloat32Array:
+	var n := int(0.06 * SAMPLE_RATE)
+	var out := PackedFloat32Array()
+	out.resize(n)
+	for i in n:
+		var t := float(i) / SAMPLE_RATE
+		var s := (randf() * 2.0 - 1.0) * exp(-t * 110.0) * 0.55
+		s += sin(TAU * 2300.0 * t) * exp(-t * 140.0) * 0.2
+		out[i] = clampf(s, -1.0, 1.0)
+	return out
 
 
 ## Sword slash: bright metallic "shing" attack + air-cutting swish tail.

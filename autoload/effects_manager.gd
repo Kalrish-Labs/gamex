@@ -54,9 +54,10 @@ func crystal_burst(color: Color, at_position: Vector2) -> void:
 func score_popup(text: String, at_position: Vector2, color: Color = Color(0.95, 0.98, 1.0)) -> void:
 	var popup := _popups[_next_popup]
 	_next_popup = (_next_popup + 1) % POPUP_POOL_SIZE
-	var old_tween: Variant = popup.get_meta("tween", null)
-	if old_tween is Tween and (old_tween as Tween).is_valid():
-		(old_tween as Tween).kill()
+	if popup.has_meta("tween"):
+		var old_tween: Tween = popup.get_meta("tween")
+		if old_tween != null and old_tween.is_valid():
+			old_tween.kill()
 	popup.text = text
 	popup.position = at_position + Vector2(-popup.size.x * 0.5, -50.0)
 	popup.modulate = Color(color, 1.0)

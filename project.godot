@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Pani Puri Panic"
-config/description="You are the golgappa vendor! Catch flying puris, serve the queue, dodge chilis. Desi street-food arcade chaos."
+config/name="Carrom Clash"
+config/description="Desi carrom on your phone — flick the striker, pocket the coins, grab the rani. 2 players, one phone."
 config/version="0.1.0"
 run/main_scene="res://scenes/game/game.tscn"
 config/features=PackedStringArray("4.7", "Mobile")
