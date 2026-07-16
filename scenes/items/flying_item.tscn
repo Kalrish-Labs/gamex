@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/items/flying_item.gd" id="1_item"]
+
+[node name="FlyingItem" type="Node2D"]
+script = ExtResource("1_item")
+
+[node name="Glow" type="Polygon2D" parent="."]
+scale = Vector2(1.35, 1.35)
+color = Color(1, 1, 1, 0.22)
+polygon = PackedVector2Array(46, 0, 32.5, 32.5, 0, 46, -32.5, 32.5, -46, 0, -32.5, -32.5, 0, -46, 32.5, -32.5)
+
+[node name="Body" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(46, 0, 32.5, 32.5, 0, 46, -32.5, 32.5, -46, 0, -32.5, -32.5, 0, -46, 32.5, -32.5)
+
+[node name="Shine" type="Polygon2D" parent="."]
+color = Color(1, 1, 1, 0.25)
+polygon = PackedVector2Array(20, 0, 0, 20, -20, 0, 0, -20)

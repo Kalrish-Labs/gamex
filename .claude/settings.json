@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(python -c \"import pypdf,sys; r=pypdf.PdfReader\\(sys.argv[1]\\); print\\('\\\\n'.join\\(pg.extract_text\\(\\) for pg in r.pages\\)\\)\" $p)",
+      "PowerShell($p = \"C:\\\\Users\\\\Abhishek Mukherjee\\\\.claude\\\\projects\\\\d--Abhishek-games-gem-fight\\\\3303e596-22e5-4154-8f84-ae4471656388\\\\tool-results\\\\webfetch-1784182882673-ucisd5.pdf\")",
+      "WebFetch(domain:investgame.net)",
+      "WebSearch",
+      "PowerShell($j = \"C:\\\\Users\\\\Abhishek Mukherjee\\\\.claude\\\\projects\\\\d--Abhishek-games-gem-fight\\\\3303e596-22e5-4154-8f84-ae4471656388\\\\subagents\\\\workflows\\\\wf_81fe744b-868\\\\journal.jsonl\"; \\(Get-Content $j | Measure-Object -Line\\).Lines; \\(Get-Item $j\\).Length)",
+      "Read(//c/Users/Abhishek Mukherjee/.claude/projects/d--Abhishek-games-gem-fight/3303e596-22e5-4154-8f84-ae4471656388/subagents/workflows/wf_81fe744b-868/**)",
+      "PowerShell(& \"D:\\\\Godot\\\\Godot_v4.7.1-stable_win64_console.exe\" --headless --path \"d:\\\\Abhishek\\\\games\\\\gem fight\" --quit-after 300)"
+    ]
+  }
+}

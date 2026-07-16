@@ -1,0 +1,129 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://scripts/game/game.gd" id="1_game"]
+[ext_resource type="PackedScene" path="res://scenes/player/slash_controller.tscn" id="2_slash"]
+[ext_resource type="Script" path="res://scripts/items/item_spawner.gd" id="3_spawner"]
+[ext_resource type="Script" path="res://scripts/game/customer_queue.gd" id="4_queue"]
+
+[sub_resource type="Gradient" id="Gradient_dusk"]
+offsets = PackedFloat32Array(0, 0.6, 1)
+colors = PackedColorArray(0.16, 0.07, 0.2, 1, 0.13, 0.06, 0.09, 1, 0.26, 0.11, 0.05, 1)
+
+[sub_resource type="GradientTexture2D" id="GradTex_dusk"]
+gradient = SubResource("Gradient_dusk")
+fill_from = Vector2(0, 0)
+fill_to = Vector2(0, 1)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_game")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 720.0
+offset_bottom = 1280.0
+mouse_filter = 2
+texture = SubResource("GradTex_dusk")
+expand_mode = 1
+
+[node name="AmbientDust" type="CPUParticles2D" parent="."]
+position = Vector2(360, 640)
+amount = 26
+lifetime = 9.0
+preprocess = 9.0
+emission_shape = 3
+emission_rect_extents = Vector2(360, 640)
+direction = Vector2(0, -1)
+spread = 30.0
+gravity = Vector2(0, -14)
+initial_velocity_min = 4.0
+initial_velocity_max = 22.0
+scale_amount_min = 2.0
+scale_amount_max = 5.0
+color = Color(1, 0.72, 0.35, 0.14)
+
+[node name="Camera" type="Camera2D" parent="."]
+position = Vector2(360, 640)
+
+[node name="ItemSpawner" type="Node2D" parent="."]
+script = ExtResource("3_spawner")
+
+[node name="CustomerQueue" type="Node2D" parent="."]
+script = ExtResource("4_queue")
+
+[node name="SlashController" parent="." instance=ExtResource("2_slash")]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="HUD"]
+offset_left = 24.0
+offset_top = 16.0
+offset_right = 460.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(1, 0.93, 0.8, 1)
+theme_override_font_sizes/font_size = 40
+text = "Score  0"
+
+[node name="ComboLabel" type="Label" parent="HUD"]
+offset_left = 24.0
+offset_top = 74.0
+offset_right = 460.0
+offset_bottom = 116.0
+theme_override_colors/font_color = Color(1, 0.72, 0.35, 1)
+theme_override_font_sizes/font_size = 28
+text = "Streak 0    x1"
+
+[node name="LivesLabel" type="Label" parent="HUD"]
+offset_left = 470.0
+offset_top = 16.0
+offset_right = 696.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(1, 0.45, 0.4, 1)
+theme_override_font_sizes/font_size = 40
+text = "Gussa  0/3"
+horizontal_alignment = 2
+
+[node name="GameOverPanel" type="Control" parent="HUD"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Dim" type="ColorRect" parent="HUD/GameOverPanel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.02, 0.02, 0.75)
+
+[node name="TitleLabel" type="Label" parent="HUD/GameOverPanel"]
+offset_top = 340.0
+offset_right = 720.0
+offset_bottom = 450.0
+theme_override_colors/font_color = Color(1, 0.5, 0.35, 1)
+theme_override_font_sizes/font_size = 80
+text = "DUKAAN BAND!"
+horizontal_alignment = 1
+
+[node name="FinalScoreLabel" type="Label" parent="HUD/GameOverPanel"]
+offset_top = 500.0
+offset_right = 720.0
+offset_bottom = 565.0
+theme_override_colors/font_color = Color(1, 0.93, 0.8, 1)
+theme_override_font_sizes/font_size = 46
+text = "Plates served  0"
+horizontal_alignment = 1
+
+[node name="BestLabel" type="Label" parent="HUD/GameOverPanel"]
+offset_top = 575.0
+offset_right = 720.0
+offset_bottom = 630.0
+theme_override_colors/font_color = Color(1, 0.72, 0.35, 1)
+theme_override_font_sizes/font_size = 34
+text = "Best  0"
+horizontal_alignment = 1
+
+[node name="PlayAgainButton" type="Button" parent="HUD/GameOverPanel"]
+offset_left = 200.0
+offset_top = 720.0
+offset_right = 520.0
+offset_bottom = 800.0
+theme_override_font_sizes/font_size = 36
+text = "PHIR SE!"

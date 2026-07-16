@@ -1,0 +1,18 @@
+# Godot 4 cache / imported files (regenerated automatically — never commit)
+.godot/
+
+# Android build template (added later via editor — large, regenerable)
+android/
+
+# Export output
+build/
+*.apk
+*.aab
+
+# Keystores & secrets (NEVER commit signing keys)
+*.keystore
+*.jks
+
+# OS junk
+Thumbs.db
+Desktop.ini

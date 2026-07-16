@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#33143a"/>
+      <stop offset="1" stop-color="#3d1a0c"/>
+    </linearGradient>
+    <radialGradient id="puri" cx="0.4" cy="0.35" r="0.75">
+      <stop offset="0" stop-color="#f2c56b"/>
+      <stop offset="0.7" stop-color="#d99a3f"/>
+      <stop offset="1" stop-color="#a86a24"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.55">
+      <stop offset="0" stop-color="#ffb054" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#ffb054" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="128" height="128" rx="24" fill="url(#bg)"/>
+  <circle cx="64" cy="62" r="48" fill="url(#glow)"/>
+  <!-- puri -->
+  <circle cx="64" cy="62" r="34" fill="url(#puri)"/>
+  <!-- crack opening with pani -->
+  <ellipse cx="64" cy="52" rx="16" ry="10" fill="#5b3a14"/>
+  <ellipse cx="64" cy="52" rx="12" ry="7" fill="#3f7d4e"/>
+  <ellipse cx="60" cy="50" rx="4" ry="2.4" fill="#8fd8a0" opacity="0.8"/>
+  <!-- shine -->
+  <ellipse cx="48" cy="44" rx="9" ry="5" fill="#ffe9b8" opacity="0.55" transform="rotate(-25 48 44)"/>
+  <!-- chili accent -->
+  <path d="M 96 92 q 10 -2 12 -12 q 3 8 -3 16 q -5 7 -13 5 q -3 -1 -2 -4 q 1 -4 6 -5 z" fill="#d8341c"/>
+  <circle cx="106" cy="79" r="3" fill="#3f7d4e"/>
+  <!-- steam -->
+  <path d="M 52 20 q 4 -6 0 -10" stroke="#ffd9a0" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.7"/>
+  <path d="M 66 18 q 4 -6 0 -10" stroke="#ffd9a0" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.5"/>
+</svg>
